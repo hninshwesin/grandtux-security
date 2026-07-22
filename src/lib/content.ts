@@ -3,7 +3,7 @@ export const site = {
   shortName: "GRANDTUX",
   tagline: "RESEARCH • SECURE • PROTECT",
   closingLine: "Identify. Report. Secure.",
-  email: "security@grandtux.com",
+  email: "contact@grandtux.com",
   website: "grandtux.com",
   websiteUrl: "https://grandtux.com",
   description:
