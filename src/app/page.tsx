@@ -1,65 +1,112 @@
-import Image from "next/image";
+import { Button } from "@/components/Button";
+import { Container } from "@/components/Container";
+import { CtaBand } from "@/components/CtaBand";
+import { ProcessStep } from "@/components/ProcessStep";
+import { SectionHeading } from "@/components/SectionHeading";
+import { ServiceCard } from "@/components/ServiceCard";
+import { TrustStrip } from "@/components/TrustStrip";
+import { homeServiceCards, processSteps, site } from "@/lib/content";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <>
+      <section className="relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 hero-glow" />
+        <div className="pointer-events-none absolute inset-0 hero-grid" />
+
+        <Container className="relative grid items-center gap-12 py-16 lg:grid-cols-2 lg:gap-10 lg:py-24">
+          <div className="flex flex-col gap-6">
+            <p className="animate-fade-up text-xs font-semibold uppercase tracking-[0.24em] text-accent-cyan">
+              {site.tagline}
+            </p>
+            <h1 className="animate-fade-up-delay-1 font-display text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.35rem]">
+              Securing Systems.
+              <br />
+              Protecting <span className="text-gradient">Futures.</span>
+            </h1>
+            <p className="animate-fade-up-delay-2 max-w-lg text-base leading-relaxed text-muted sm:text-lg">
+              We research vulnerabilities, secure infrastructure, and deliver assessments that help teams
+              identify risk, report clearly, and protect what matters.
+            </p>
+            <div className="animate-fade-up-delay-3 flex flex-wrap gap-3">
+              <Button href="/labs" variant="primary">
+                Explore Labs
+              </Button>
+              <Button href="/services" variant="secondary">
+                Our Services
+              </Button>
+            </div>
+          </div>
+
+          <div className="relative mx-auto flex w-full max-w-sm items-center justify-center sm:max-w-md lg:max-w-lg">
+            <div className="animate-pulse-ring pointer-events-none absolute h-72 w-72 rounded-full border border-accent/25 sm:h-96 sm:w-96" />
+            <div
+              className="animate-pulse-ring pointer-events-none absolute h-[22rem] w-[22rem] rounded-full border border-accent-cyan/15 sm:h-[28rem] sm:w-[28rem]"
+              style={{ animationDelay: "1.2s" }}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            <div className="animate-float relative z-10">
+              <div className="pointer-events-none absolute inset-[18%] rounded-full bg-accent/20 blur-3xl" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo-hero.png"
+                alt={`${site.name} logo`}
+                width={640}
+                height={640}
+                className="relative mx-auto h-auto w-full max-w-[280px] bg-transparent drop-shadow-[0_0_48px_rgba(43,108,255,0.5)] sm:max-w-[340px] lg:max-w-[380px]"
+              />
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <TrustStrip />
+
+      <section className="py-20">
+        <Container>
+          <SectionHeading
+            eyebrow="What We Do"
+            title="Security by Research. Built for"
+            accent="Impact."
+            description="Offensive security assessments grounded in real attacker techniques — with reporting your team can act on."
+            className="mb-10"
+          />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {homeServiceCards.map((card, index) => (
+              <ServiceCard
+                key={card.title}
+                title={card.title}
+                description={card.description}
+                icon={card.icon}
+                featured={index === 0}
+              />
+            ))}
+          </div>
+          <div className="mt-8">
+            <Button href="/services" variant="secondary">
+              View All Services
+            </Button>
+          </div>
+        </Container>
+      </section>
+
+      <section className="border-y border-border-subtle bg-background-navy/60 py-20">
+        <Container>
+          <SectionHeading
+            eyebrow="Engagement Process"
+            title="From authorization to"
+            accent="remediation."
+            description="A clear, professional path — authorized testing only, scoped carefully, reported thoroughly."
+            className="mb-12"
+          />
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+            {processSteps.map((step) => (
+              <ProcessStep key={step.step} {...step} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <CtaBand />
+    </>
   );
 }
